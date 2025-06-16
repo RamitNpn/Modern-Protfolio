@@ -1,27 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
 import { NavbarWrapper } from "./Navbar.styles";
-import { useSelector } from "react-redux";
-import { State } from "../../redux/reducers";
-import {
-  FaHome,
-  FaStar,
-  FaBriefcase,
-  FaEnvelope,
-  FaUser,
-} from "react-icons/fa";
+// import { useSelector } from "react-redux";
+// import { State } from "../../redux/reducers";
+import { FaHome, FaStar, FaBriefcase, FaEnvelope } from "react-icons/fa";
+import { useUser, useClerk, UserButton } from "@clerk/clerk-react";
 
 const Navbar = () => {
-  const { user } = useSelector((state: State) => state.user);
+  // const { user } = useSelector((state: State) => state.user);
   const path = useLocation().pathname.split("/")[1];
 
   const isActive = (navName: string): string => {
-    if (navName === path) {
-      return "active_nav";
-    } else {
-      return "";
-    }
+    return navName === path ? "active_nav" : "";
   };
 
+  const { user } = useUser();
+  const { openSignIn } = useClerk();
   return (
     <NavbarWrapper>
       <div className="nav_left">
@@ -31,6 +24,7 @@ const Navbar = () => {
           </div>
         </Link>
       </div>
+
       <div className="nav_right">
         <ul className="nav_list">
           <Link to="/">
@@ -67,25 +61,36 @@ const Navbar = () => {
           </Link>
         </ul>
 
-        {!user ? (
-          <Link to={"/login"}>
-            <button className="client_button">
-              <FaUser className="login_icon" />
-              <span>Login</span>
-            </button>
-          </Link>
+        {user ? (
+          <UserButton
+            appearance={{
+              elements: {
+                userButtonAvatarBox: {
+                  width: "40px",
+                  height: "40px",
+                },
+              },
+            }}
+          />
         ) : (
-          <Link className="profileBox" to={`/account/profile/${user._id}`}>
-            <img
-              className="profileImg"
-              src={user.profileImg}
-              alt="userProfile"
-            />
-            <div className="profileInfo">
-              {/* <h4 className="profileName">{user.username}</h4> */}
-              {/* <span className="profileEmail">{user.email}</span> */}
-            </div>
-          </Link>
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              openSignIn();
+            }}
+            style={{
+              backgroundColor: "#007bff", // blue background
+              color: "#fff", // white text
+              padding: "8px 16px",
+              borderRadius: "6px",
+              textDecoration: "none",
+              cursor: "pointer",
+              display: "inline-block",
+            }}
+          >
+            Log in
+          </a>
         )}
       </div>
     </NavbarWrapper>

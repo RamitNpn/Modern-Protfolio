@@ -1,33 +1,28 @@
-
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Orbitron:wght@800;900&family=Poppins:wght@300;400;500;600;700&display=swap'); 
-*{
- margin: 0; 
- padding: 0;
- box-sizing: border-box ;
- color: var(--white);
- font-family: 'Poppins', sans-serif;
- 
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Orbitron:wght@800;900&family=Poppins:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
 }
-a{
+a {
   text-decoration: none;
 }
-body{
+body {
   background: var(--black_color);
 }
-.MuiRating-iconFilled svg{
+.MuiRating-iconFilled svg {
   color: #37e710 !important;
   fill: var(--main_color) !important;
 }
-.MuiRating-iconEmpty svg{
+.MuiRating-iconEmpty svg {
   fill: var(--main_color) !important;
 }
 /* width */
 ::-webkit-scrollbar {
   width: 7px;
-  height: 7px;;
-
+  height: 7px;
 }
 
 /* Track */
@@ -41,7 +36,57 @@ body{
   border-radius: 10px;
 }
 
-.css-6hp17o-MuiList-root-MuiMenu-list{
+.css-6hp17o-MuiList-root-MuiMenu-list {
   /* padding: 0 !important; */
   background-color: #151515 !important;
+}
+
+/* Strong global override for Clerk UI to force black text & white background */
+/* Target Manage Account pages (Profile and Security) for black text and white background */
+
+.clerk-user-settings,
+.clerk-user-settings * {
+  color: #000 !important;
+  background-color: #fff !important;
+  border-color: #ccc !important;
+}
+
+/* Specifically fix headings, labels, inputs, buttons inside Manage Account */
+
+.clerk-user-settings h1,
+.clerk-user-settings h2,
+.clerk-user-settings label,
+.clerk-user-settings p,
+.clerk-user-settings span,
+.clerk-user-settings button,
+.clerk-user-settings input,
+.clerk-user-settings select,
+.clerk-user-settings textarea {
+  color: #000 !important;
+  background-color: #fff !important;
+  border-color: #ccc !important;
+}
+
+/* Buttons styling */
+.clerk-user-settings button {
+  background-color: #007bff !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.clerk-user-settings button:hover {
+  background-color: #0056b3 !important;
+}
+
+/* Placeholder text */
+.clerk-user-settings ::placeholder {
+  color: #555 !important;
+  opacity: 1 !important;
+}
+
+/* Modals/popovers inside Manage Account */
+.clerk-user-settings .clerk-modal,
+.clerk-user-settings .clerk-popover {
+  background-color: #fff !important;
+  color: #000 !important;
 }

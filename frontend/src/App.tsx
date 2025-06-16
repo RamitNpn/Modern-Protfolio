@@ -8,8 +8,8 @@ import Tools from "./pages/Admin/Upload/Tools/Tools";
 import WorkDetail from "./pages/WorkDetail/WorkDetail";
 import Reviews from "./pages/Reviews/Reviews";
 import Works from "./pages/Works/Works";
-import Signup from "./pages/auth/signup/Signup";
-import Login from "./pages/auth/login/Login";
+// import Signup from "./pages/auth/signup/Signup";
+// import Login from "./pages/auth/login/Login";
 import Contact from "./pages/contact/Contact";
 import useSetup from "./hooks/useSetup";
 import Profile from "./pages/profile/Profile";
@@ -50,8 +50,8 @@ function App() {
             <Route path="/work/:id" element={<WorkDetail />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/works" element={<Works />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
+            {/* <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} /> */}
             <Route path="/contact" element={<Contact />} />
 
             {/* Account Routes */}
